@@ -1,0 +1,31 @@
+# Blueprint per Render: alternativa a Heroku (piano free disponibile)
+services:
+  - type: web
+    name: blog-backend
+    runtime: node
+    plan: free
+    region: frankfurt
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: 18.20.4
+      - key: JWT_SECRET
+        generateValue: true
+      - key: FE_DEV_URL
+        value: http://localhost:3000
+      - key: MONGO_URL
+        sync: false
+      - key: CLOUDINARY_URL
+        sync: false
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: API_URL
+        sync: false
+      - key: FE_PROD_URL
+        sync: false
